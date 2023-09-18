@@ -1,3 +1,6 @@
+// Variables globales
+let currentImageIndex = 0;
+const carousel = document.querySelector('.carousel');
 const projects = [
         {
             name: "Nom du projet 1",
@@ -199,59 +202,74 @@ const projects = [
             category: "all, shooting, collaboration",
         },
     ];
+// Fonction pour afficher une image spécifique du carrousel
+function showImage(index) {
+    const translateX = -index * 100 + '%'; // Calcul de la valeur 'translateX'
+    carousel.style.transform = `translateX(${translateX})`;
+}
 
-    // Définissez la fonction pour afficher les images en fonction de la catégorie sélectionnée
-    function filterImages(category) {
-        // Récupérez la div du portfolio à l'intérieur de cette fonction
-        const portfolioContainer = document.querySelector('.portfolio-container');
-    
-        // Vérifiez si la div du portfolio existe
-        if (!portfolioContainer) {
-            console.error("La div du portfolio n'a pas été trouvée.");
-            return;
-        }
-    
-        // ... Le reste de votre code ici ...
+// Fonction pour afficher l'image suivante automatiquement
+function showNextImage() {
+    currentImageIndex++;
+    if (currentImageIndex >= portfolioItems.length) {
+        currentImageIndex = 0;
     }
-    
-    // Attendez que le document HTML soit complètement chargé
-    document.addEventListener('DOMContentLoaded', function () {
-        // Définissez la fonction pour ajouter des gestionnaires d'événements aux boutons de filtrage
-        function addFilterEventListeners() {
-            // Sélectionnez les boutons de filtrage par catégorie
-            const filterButtons = document.querySelectorAll('.portfolio-filters button');
-    
-            // Attachez un gestionnaire d'événement à chaque bouton
-            filterButtons.forEach((button) => {
-                button.addEventListener('click', () => {
-                    // Obtenez la catégorie à partir de l'attribut data-category du bouton
-                    const category = button.getAttribute('data-category');
-    
-                    // Appelez la fonction de filtrage avec la catégorie sélectionnée
-                    filterImages(category);
-                });
-            });
-        }
-    
-        // Appelez la fonction pour ajouter des gestionnaires d'événements aux boutons de filtrage
-        addFilterEventListeners();
-    
-        // Affichez toutes les images au chargement initial de la page en utilisant la catégorie 'all'
-        filterImages('all');
-    
-        // Récupérez la div du carrousel
-        const carousel = document.querySelector('.carousel');
-    
-        // Boucle à travers les projets et créez les éléments de diapositive du carrousel
-        projects.forEach((project) => {
-            const carouselItem = document.createElement('div');
-            carouselItem.classList.add('carousel-item');
-            const carouselImage = document.createElement('img');
-            carouselImage.src = project.imageSrc;
-            carouselImage.alt = project.name;
-            carouselItem.appendChild(carouselImage);
-    
-            // Ajoutez l'élément de diapositive au carrousel
-            carousel.appendChild(carouselItem);
-        });
+    showImage(currentImageIndex);
+}
+
+// Démarrez le défilement automatique toutes les X millisecondes (par exemple, 3000 ms)
+const autoScrollInterval = 3000; // Réglez l'intervalle en millisecondes
+let autoScrollTimer = setInterval(showNextImage, autoScrollInterval);
+
+// Arrêtez le défilement automatique lorsque la souris passe sur le carrousel
+carousel.addEventListener('mouseenter', () => {
+    clearInterval(autoScrollTimer);
+});
+
+// Redémarrez le défilement automatique lorsque la souris quitte le carrousel
+carousel.addEventListener('mouseleave', () => {
+    autoScrollTimer = setInterval(showNextImage, autoScrollInterval);
+});
+
+// Fonction pour gérer le clic sur le bouton "Suivant"
+function handleNextButtonClick() {
+    currentImageIndex++;
+    if (currentImageIndex >= portfolioItems.length) {
+        currentImageIndex = 0;
+    }
+    showImage(currentImageIndex);
+}
+
+// Fonction pour gérer le clic sur le bouton "Précédent"
+function handlePrevButtonClick() {
+    currentImageIndex--;
+    if (currentImageIndex < 0) {
+        currentImageIndex = portfolioItems.length - 1;
+    }
+    showImage(currentImageIndex);
+}
+
+// Attachez des gestionnaires d'événements aux boutons "Suivant" et "Précédent"
+const nextButton = document.getElementById('nextBtn');
+const prevButton = document.getElementById('prevBtn');
+
+nextButton.addEventListener('click', handleNextButtonClick);
+prevButton.addEventListener('click', handlePrevButtonClick);
+
+// Fonction pour afficher les superpositions d'images au survol
+portfolioItems.forEach((item) => {
+    const imageOverlay = item.querySelector('.image-overlay');
+    const overlayContent = item.querySelector('.overlay-content');
+
+    item.addEventListener('mouseenter', () => {
+        imageOverlay.style.opacity = 1;
+        imageOverlay.style.transform = 'translateY(0)';
+        overlayContent.style.opacity = 1;
     });
+
+    item.addEventListener('mouseleave', () => {
+        imageOverlay.style.opacity = 0;
+        imageOverlay.style.transform = 'translateY(-100%)';
+        overlayContent.style.opacity = 0;
+    });
+});
