@@ -1,0 +1,966 @@
+/* Réinitialisation CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styles globaux */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
+.header {
+  background-color: transparent;
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: background-color 0.3s;
+}
+
+/* CSS pour l'état étendu du header lorsqu'on fait défiler la page */
+header.expanded {
+    width: 100%; /* Largeur maximale */
+    right: 0; /* Réinitialise la position droite */
+}
+
+/* CSS pour la navigation verticale */
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(17, 17, 17, 0.9); /* Couleur de fond avec transparence (0.9) */
+    width: 200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s; /* Ajouter une transition pour l'effet de survol */
+}
+
+/* Styles pour la navigation */
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin-bottom: 20px;
+}
+
+/* Styles pour les liens du header */
+.header-button {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #e74c3c;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  text-decoration: none; /* Ajout de cette propriété pour supprimer le soulignement */
+}
+
+
+.header-button:hover {
+  background-color: #e74c3c;
+  color: #fff;
+  border-color: #e74c3c;
+}
+
+/* Styles de boutons */
+.btn-primary {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn-primary:hover {
+    background-color: #b30000;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #fff;
+    color: #ff0000;
+    padding: 15px 30px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    display: inline-block;
+    margin-top: 20px;
+    border: 2px solid #ff0000;
+}
+
+.btn-secondary:hover {
+    background-color: #ff0000;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.btn-alternate {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn-alternate:hover {
+    background-color: #ff4500;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Styles de sections */
+section {
+    padding: 60px 0; /* Réduire légèrement l'espacement intérieur */
+    text-align: center;
+    background-color: #111; /* Couleur de fond de secours */
+}
+
+section h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333; /* Couleur du texte du titre */
+}
+
+section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #555; /* Couleur du texte du sous-titre */
+}
+
+section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #777; /* Couleur du texte du paragraphe */
+}
+
+/* STYLE SECTION ACCUEIL */
+#accueil {
+    position: relative;
+    background-color: #111; /* Couleur de fond */
+    text-align: center;
+    height: 100vh; /* Hauteur de la section équivalente à la hauteur de l'écran */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Masquer tout contenu débordant */
+}
+
+
+/* TITRE BARONFAUSH */
+/* === removing default button style ===*/
+.button {
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+}
+
+/* button styling */
+.button {
+  --border-right: 6px;
+  --text-stroke-color: rgba(255,255,255,0.6);
+  --animation-color: #ff3737;
+  --fs-size: 2em;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size, 3000em);
+  font-family: "Arial";
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+/* this is the text, when you hover on button */
+.hover-text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: var(--animation-color);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+/* hover */
+.button:hover .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color));
+  -webkit-filter: drop-shadow(0 0 23px var(--animation-color));
+}
+
+/* Styles pour la section Portfolio */
+.portfolio-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.portfolio-filters {
+  margin-bottom: 20px;
+}
+
+.portfolio-item {
+  width: calc(50% - 15px); /* Chaque paire d'images occupe 50% de la largeur avec marge */
+  margin-bottom: 30px; /* Espacement entre les paires d'images */
+  display: flex;
+  justify-content: space-between; /* Répartit l'espace entre les images */
+}
+
+/* Styles pour les boutons du portfolio */
+.portfolio-button {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #e74c3c;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.portfolio-button:hover {
+  background-color: #e74c3c;
+  color: #fff;
+  border-color: #e74c3c;
+}
+
+.portfolio-button.active {
+  background-color: #e74c3c;
+  color: #fff;
+  border-color: #e74c3c;
+}
+
+/* Styles pour les images du portfolio */
+.carousel-container {
+  position: relative;
+  max-width: 800px; /* Ajustez la largeur du carrousel */
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-item {
+  min-width: 100%;
+  flex-shrink: 0;
+  text-align: center;
+  position: relative;
+}
+
+.carousel img {
+  max-width: 100%;
+  height: auto;
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px;
+}
+
+.carousel-button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.carousel-button:focus {
+  outline: none;
+}
+
+/* Réinitialisez la marge de la dernière image de chaque ligne */
+.portfolio-container::after {
+  content: "";
+  flex: auto;
+}
+
+
+/* Styles pour la section Services */
+#services {
+  text-align: center;
+  padding: 60px 0;
+  background-color: #111;
+  color: #717171;
+}
+
+#services h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+#services ul {
+  list-style: none;
+  padding: 0;
+}
+
+#services li {
+  font-size: 20px;
+  margin-bottom: 15px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Animation pour les éléments de la liste */
+#services li:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+#services li:nth-child(2) {
+  transition-delay: 0.4s;
+}
+
+#services li:nth-child(3) {
+  transition-delay: 0.6s;
+}
+
+#services li:nth-child(4) {
+  transition-delay: 0.8s;
+}
+
+#services li:nth-child(5) {
+  transition-delay: 1.0s;
+}
+
+/* Au survol, afficher les éléments avec une animation */
+#services:hover li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Styles de survol des éléments */
+#services li:hover {
+  color: #ff0000; /* Couleur de texte au survol */
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: color 0.3s, transform 0.3s;
+}
+
+/* Styles du formulaire de contact */
+.form-container {
+    width: 400px;
+    margin: 0 auto; /* Centre le formulaire horizontalement */
+    background: linear-gradient(#212121, #212121) padding-box,
+                linear-gradient(145deg, transparent 35%,#ff1c1c, #c340ff) border-box;
+    border: 2px solid transparent;
+    padding: 32px 24px;
+    font-size: 14px;
+    font-family: inherit;
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+    border-radius: 16px;
+  }
+  
+  
+  .form-container button:active {
+    scale: 0.95;
+  }
+  
+  .form-container .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-container .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .form-container .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #717171;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  
+  .form-container .form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+    background-color: transparent;
+    border: 1px solid #414141;
+  }
+  
+  .form-container .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    resize: none;
+    color: #fff;
+    height: 96px;
+    border: 1px solid #414141;
+    background-color: transparent;
+    font-family: inherit;
+  }
+  
+  .form-container .form-group input::placeholder {
+    opacity: 0.5;
+  }
+  
+  .form-container .form-group input:focus {
+    outline: none;
+    border-color: #e81cff;
+  }
+  
+  .form-container .form-group textarea:focus {
+    outline: none;
+    border-color: #e81cff;
+  }
+  
+  .form-container .form-submit-btn {
+    display: flex;
+    align-items: center; /* Centre verticalement le contenu du bouton */
+    justify-content: center;
+    font-family: inherit;
+    color: #717171;
+    font-weight: 600;
+    background: #313131;
+    border: 1px solid #414141;
+    padding: 12px 16px;
+    font-size: inherit;
+    gap: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+  
+  .form-container .form-submit-btn:hover {
+    background-color: #c20000;
+    border-color: #c20000;
+  }
+ /* Styles pour la section À Propos */
+ #a-propos {
+  text-align: center;
+  padding: 60px 0;
+  background-color: #111; /* Couleur d'arrière-plan */
+  color: #333;
+}
+
+#a-propos h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+#a-propos p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Animation pour les paragraphes */
+#a-propos p:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+#a-propos p:nth-child(2) {
+  transition-delay: 0.4s;
+}
+
+#a-propos p:nth-child(3) {
+  transition-delay: 0.6s;
+}
+
+#a-propos p:nth-child(4) {
+  transition-delay: 0.8s;
+}
+
+#a-propos p:nth-child(5) {
+  transition-delay: 1.0s;
+}
+
+/* Au survol, afficher les paragraphes avec une animation */
+#a-propos:hover p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Styles de survol des paragraphes */
+#a-propos p:hover {
+  font-weight: bold; /* Gras au survol */
+  cursor: pointer;
+  color: #ff0000; /* Couleur de texte au survol */
+  transition: font-weight 0.3s, color 0.3s;
+}
+
+/* Barre de progression de défilement personnalisée */
+#scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background-color: #ff0000;
+  opacity: 0.7;
+  border-radius: 2px;
+  z-index: 999;
+}
+
+.indicator-fill {
+  width: 0;
+  height: 100%;
+  background-color: #b30000;
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+
+/* Styles pour le footer */
+#footer {
+  background-color: #222;
+  color: #717171;
+  padding: 40px 0;
+  text-align: center; /* Centrer le contenu du footer */
+}
+
+#footer .footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+#footer .footer-logo {
+  flex: 1;
+  max-width: 200px;
+}
+
+#footer .footer-logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+#footer .contact-info {
+  flex: 1;
+  padding: 0 20px;
+}
+
+#footer .contact-info h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: left; /* Aligner le texte à gauche */
+}
+
+#footer .social-media {
+  flex: 1;
+  text-align: right;
+}
+
+#footer .social-media h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: right; /* Aligner le texte à droite */
+}
+
+#footer .social-media a {
+  color: #fff;
+  font-size: 24px;
+  margin-left: 10px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+#footer .social-media a:hover {
+  color: #007BFF;
+}
+
+#footer .copyright {
+  color: #fff; /* Changez la couleur en blanc (#fff) */
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+#footer .copyright p {
+  margin: 5px 0;
+}
+
+#footer .copyright p:first-child {
+  font-weight: bold;
+}
+
+
+
+/* BARONFAUSH SOCIAL */
+.main_back {
+  position: absolute;
+  border-radius: 10px;
+  transform: rotate(90deg) translate(-50%, -50%);
+  width: 11em;
+  height: 11em;
+  background: linear-gradient(270deg, #03a9f4, #cc39a4, #ffb5d2);
+  z-index: -2;
+  box-shadow: inset 0px 0px 180px 5px #ffffff;
+  left: 50%; /* Centrer horizontalement */
+  top: 50%; /* Centrer verticalement */
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 14em;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+}
+
+  .card {
+    width: 60px;
+    height: 60px;
+    border-top-left-radius: 10px;
+    background: lightgrey;
+    transition: .4s ease-in-out, .2s background-color ease-in-out, .2s background-image ease-in-out;
+    background: rgba(255, 255, 255, 0.596);
+    backdrop-filter: blur(5px);
+    border: 1px solid transparent;
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card .instagram {
+    opacity: 0;
+    transition: .2s ease-in-out;
+    fill: #cc39a4;
+  }
+  
+  .card:nth-child(2) {
+    border-radius: 0px;
+  }
+  
+  .card:nth-child(2) .twitter {
+    opacity: 0;
+    transition: .2s ease-in-out;
+    fill: #03A9F4;
+  }
+  
+  .card:nth-child(3) {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 0px;
+  }
+  
+  .card:nth-child(3) .dribble {
+    opacity: 0;
+    transition: .2s ease-in-out;
+    fill: #ffb5d2;
+  }
+  
+  .card:nth-child(4) {
+    border-radius: 0px;
+  }
+  
+  .card:nth-child(4) .codepen {
+    opacity: 0;
+    transition: .2s ease-in-out;
+    fill: black;
+  }
+  
+  .card:nth-child(5) {
+    border-radius: 0px;
+  }
+  
+  .card:nth-child(5) .uiverse {
+    position: absolute;
+    margin-left: 0.2em;
+    margin-top: 0.2em;
+    opacity: 0;
+    transition: .2s ease-in-out;
+  }
+  
+  .card:nth-child(6) {
+    border-radius: 0px;
+  }
+  
+  .card:nth-child(6) .discord {
+    opacity: 0;
+    transition: .2s ease-in-out;
+    fill: #8c9eff;
+  }
+  
+  .card:nth-child(7) {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 0px;
+  }
+  
+  .card:nth-child(7) .github {
+    opacity: 0;
+    transition: .2s ease-in-out;
+    fill: black;
+  }
+  
+  .card:nth-child(8) {
+    border-radius: 0px;
+  }
+  
+  .card:nth-child(8) .telegram {
+    opacity: 0;
+    transition: .2s ease-in-out;
+    fill: #29b6f6;
+  }
+  
+  .card:nth-child(9) {
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 0px;
+  }
+  
+  .card:nth-child(9) .reddit {
+    opacity: 0;
+    transition: .2s ease-in-out;
+  }
+  
+  .main:hover {
+    width: 14em;
+    cursor: pointer;
+  }
+  
+  .main:hover .main_back {
+    opacity: 0;
+  }
+  
+  .main:hover .card {
+    margin: .2em;
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .main:hover .card:nth-child(5) {
+    border: transparent;
+  }
+  
+  .main:hover .text {
+    opacity: 0;
+    z-index: -3;
+  }
+  
+  .main:hover .instagram {
+    opacity: 1;
+  }
+  
+  .main:hover .twitter {
+    opacity: 1;
+  }
+  
+  .main:hover .dribble {
+    opacity: 1;
+  }
+  
+  .main:hover .codepen {
+    opacity: 1;
+  }
+  
+  .main:hover .uiverse {
+    opacity: 1;
+  }
+  
+  .main:hover .discord {
+    opacity: 1;
+  }
+  
+  .main:hover .github {
+    opacity: 1;
+  }
+  
+  .main:hover .telegram {
+    opacity: 1;
+  }
+  
+  .main:hover .reddit {
+    opacity: 1;
+  }
+  
+  .card:nth-child(1):hover {
+    background-color: #cc39a4;
+  }
+  
+  .card:nth-child(1):hover .instagram {
+    fill: white;
+  }
+  
+  .card:nth-child(2):hover {
+    background-color: #03A9F4;
+  }
+  
+  .card:nth-child(2):hover .twitter {
+    fill: white;
+  }
+  
+  .card:nth-child(3):hover {
+    background-color: #ffb5d2;
+  }
+  
+  .card:nth-child(3):hover .dribble {
+    fill: white;
+  }
+  
+  .card:nth-child(4):hover {
+    background-color: #1E1F26;
+  }
+  
+  .card:nth-child(4):hover .codepen {
+    fill: white;
+  }
+  
+  .card:nth-child(5):hover {
+    animation: backgroundIMG .1s;
+    animation-fill-mode: forwards;
+  }
+  
+  .card:nth-child(5):hover .uiverse #paint0_linear_501_142 stop {
+    stop-color: white;
+  }
+  
+  .card:nth-child(5):hover .uiverse #paint1_linear_501_142 stop {
+    stop-color: white;
+  }
+  
+  .card:nth-child(5):hover .uiverse #paint2_linear_501_142 stop {
+    stop-color: white;
+  }
+  
+  @keyframes backgroundIMG {
+    100% {
+      background-image: linear-gradient(#BF66FF,#6248FF,#00DDEB);
+    }
+  }
+  
+  .card:nth-child(6):hover {
+    background-color: #8c9eff;
+  }
+  
+  .card:nth-child(6):hover .discord {
+    fill: white;
+  }
+  
+  .card:nth-child(7):hover {
+    background-color: black;
+  }
+  
+  .card:nth-child(7):hover .github {
+    fill: white;
+  }
+  
+  .card:nth-child(8):hover {
+    background-color: #29b6f6;
+  }
+  
+  .card:nth-child(8):hover .telegram > path:nth-of-type(1) {
+    fill: white;
+  }
+  
+  .card:nth-child(8):hover .telegram > path:nth-of-type(2) {
+    fill: #29b6f6;
+  }
+  
+  .card:nth-child(8):hover .telegram > path:nth-of-type(3) {
+    fill: #29b6f6;
+  }
+  
+  .card:nth-child(9):hover {
+    background-color: rgb(255,69,0);
+  }
+  
+  .card:nth-child(9) .reddit > g circle {
+    fill: rgb(255,69,0);
+  }
+  
+  .card:nth-child(9) .reddit > g path {
+    fill: white;
+  }
+  
+  .text {
+    position: absolute;
+    font-size: 0.7em;
+    transition: .4s ease-in-out;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.33em;
+    z-index: 3;
+  }
+  /* ------------------ */
+
+/* CSS pour l'indicateur de progression de défilement */
+#scroll-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background-color: #ff0000;
+    opacity: 0.7;
+    border-radius: 2px;
+    z-index: 999;
+}
+
+.indicator-fill {
+    width: 0;
+    height: 100%;
+    background-color: #b30000;
+    border-radius: 2px;
+    transition: width 0.3s;
+}
+
+
